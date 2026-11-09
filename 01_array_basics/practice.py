@@ -15,6 +15,16 @@ def find_max_min(nums: List[int]) -> Tuple[int, int]:
     - เงื่อนไข: ห้ามใช้ฟังก์ชันสำเร็จรูป max() หรือ min()
     """
     # TODO: เขียนโค้ดของคุณที่นี่
+    max_val = nums[0]
+    min_val = nums[0]
+
+    for num in nums:
+        if num < min_val:
+            min_val = num
+        elif num > max_val:
+            max_val = num
+
+    return max_val,min_val
     pass
 
 
@@ -26,6 +36,13 @@ def reverse_array_inplace(nums: List[int]) -> None:
     - เงื่อนไข: ใช้ Two Pointers ฝั่งซ้ายและขวา สลับค่าเข้าหากัน
     """
     # TODO: เขียนโค้ดของคุณที่นี่
+    left = 0
+    right = len(nums) - 1
+
+    while left < right:
+        nums[left], nums[right] = nums[right], nums[left]
+        left = left +1
+        right = right-1
     pass
 
 
