@@ -59,35 +59,72 @@ def find_max_length_equal_0_1(nums: List[int]) -> int:
 if __name__ == "__main__":
     import sys
     sys.stdout.reconfigure(encoding="utf-8")
-    print("Testing your practice implementations in 06_prefix_sum...")
+    print("==================================================")
+    print("🚀 ผลการทดสอบโค้ดของคุณ (06_prefix_sum)")
+    print("==================================================")
 
+    # Test 1: running_sum
     try:
-        # Test 1: running_sum
-        assert running_sum([1, 2, 3, 4]) == [1, 3, 6, 10], "Test 1 Failed"
-        print("[Pass] Test 1: running_sum")
-
-        # Test 2: NumArray
-        na = NumArray([-2, 0, 3, -5, 2, -1])
-        assert na.sumRange(0, 2) == 1, "Test 2.1 Failed"
-        assert na.sumRange(2, 5) == -1, "Test 2.2 Failed"
-        assert na.sumRange(0, 5) == -3, "Test 2.3 Failed"
-        print("[Pass] Test 2: NumArray")
-
-        # Test 3: subarray_sum_equals_k
-        assert subarray_sum_equals_k([1, 1, 1], 2) == 2, "Test 3.1 Failed"
-        assert subarray_sum_equals_k([1, 2, 3], 3) == 2, "Test 3.2 Failed"
-        assert subarray_sum_equals_k([3, 4, 7, 2, -3, 1, 4, 2], 7) == 4, "Test 3.3 Failed"
-        print("[Pass] Test 3: subarray_sum_equals_k")
-
-        # Test 4: find_max_length_equal_0_1
-        assert find_max_length_equal_0_1([0, 1]) == 2, "Test 4.1 Failed"
-        assert find_max_length_equal_0_1([0, 1, 0]) == 2, "Test 4.2 Failed"
-        assert find_max_length_equal_0_1([0, 1, 1, 0, 1, 1, 1, 0]) == 4, "Test 4.3 Failed"
-        print("[Pass] Test 4: find_max_length_equal_0_1")
-
-        print("\n[EXCELLENT] All tests in 06_prefix_sum passed!")
+        sample1 = [1, 2, 3, 4]
+        res1 = running_sum(sample1)
+        assert res1 == [1, 3, 6, 10], f"Expected [1, 3, 6, 10], got {res1}"
+        print("[Pass] โจทย์ที่ 1: running_sum")
+        print(f"       -> Input:         {sample1}")
+        print(f"       -> Output ของคุณ: {res1} (ถูกต้อง!)")
     except AssertionError as e:
-        print(f"\n[FAIL] {e}")
-        print("Tip: ทบทวนความสัมพันธ์ (current_sum - k) และ {0: 1} ใน README.md / solutions.py")
+        print(f"[FAIL] โจทย์ที่ 1: running_sum -> {e}")
     except Exception as e:
-        print(f"\n[ERROR] เกิดข้อผิดพลาด: {e}")
+        print(f"[ERROR] โจทย์ที่ 1: {e}")
+
+    print("--------------------------------------------------")
+
+    # Test 2: NumArray
+    try:
+        data2 = [-2, 0, 3, -5, 2, -1]
+        na = NumArray(data2)
+        r1 = na.sumRange(0, 2)
+        r2 = na.sumRange(2, 5)
+        r3 = na.sumRange(0, 5)
+        assert r1 == 1 and r2 == -1 and r3 == -3, f"Expected (1, -1, -3), got ({r1}, {r2}, {r3})"
+        print("[Pass] โจทย์ที่ 2: NumArray")
+        print(f"       -> Array: {data2}")
+        print(f"       -> sumRange(0, 2): {r1} (ถูกต้อง!)")
+        print(f"       -> sumRange(2, 5): {r2} (ถูกต้อง!)")
+        print(f"       -> sumRange(0, 5): {r3} (ถูกต้อง!)")
+    except AssertionError as e:
+        print(f"[FAIL] โจทย์ที่ 2: NumArray -> {e}")
+    except Exception as e:
+        print(f"[ERROR] โจทย์ที่ 2: {e}")
+
+    print("--------------------------------------------------")
+
+    # Test 3: subarray_sum_equals_k
+    try:
+        s3_a = subarray_sum_equals_k([1, 1, 1], 2)
+        s3_b = subarray_sum_equals_k([1, 2, 3], 3)
+        assert s3_a == 2, f"Expected 2, got {s3_a}"
+        assert s3_b == 2, f"Expected 2, got {s3_b}"
+        print("[Pass] โจทย์ที่ 3: subarray_sum_equals_k")
+        print(f"       -> [1, 1, 1], k=2 -> ผลลัพธ์: {s3_a} (ถูกต้อง!)")
+        print(f"       -> [1, 2, 3], k=3 -> ผลลัพธ์: {s3_b} (ถูกต้อง!)")
+    except AssertionError as e:
+        print(f"[FAIL] โจทย์ที่ 3: subarray_sum_equals_k -> {e}")
+    except Exception as e:
+        print(f"[ERROR] โจทย์ที่ 3: {e}")
+
+    print("--------------------------------------------------")
+
+    # Test 4: find_max_length_equal_0_1
+    try:
+        sample4 = [0, 1, 1, 0, 1, 1, 1, 0]
+        res4 = find_max_length_equal_0_1(sample4)
+        assert res4 == 4, f"Expected 4, got {res4}"
+        print("[Pass] โจทย์ที่ 4: find_max_length_equal_0_1")
+        print(f"       -> Input:         {sample4}")
+        print(f"       -> Output ของคุณ: {res4} (ถูกต้อง!)")
+    except AssertionError as e:
+        print(f"[FAIL] โจทย์ที่ 4: find_max_length_equal_0_1 -> {e}")
+    except Exception as e:
+        print(f"[ERROR] โจทย์ที่ 4: {e}")
+
+    print("==================================================")

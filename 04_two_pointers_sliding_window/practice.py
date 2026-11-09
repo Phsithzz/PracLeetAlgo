@@ -74,42 +74,106 @@ def min_sub_array_len(target: int, nums: List[int]) -> int:
 if __name__ == "__main__":
     import sys
     sys.stdout.reconfigure(encoding="utf-8")
-    print("Testing your practice implementations in 04_two_pointers_sliding_window...")
+    print("==================================================")
+    print("🚀 ผลการทดสอบโค้ดของคุณ (04_two_pointers_sliding_window)")
+    print("==================================================")
 
+    # Test 1: is_palindrome
     try:
-        # Test 1: is_palindrome
-        assert is_palindrome("A man, a plan, a canal: Panama") is True, "Test 1.1 Failed"
-        assert is_palindrome("race a car") is False, "Test 1.2 Failed"
-        print("[Pass] Test 1: is_palindrome")
-
-        # Test 2: two_sum_sorted
-        assert two_sum_sorted([2, 7, 11, 15], 9) == [1, 2], "Test 2.1 Failed"
-        assert two_sum_sorted([2, 3, 4], 6) == [1, 3], "Test 2.2 Failed"
-        print("[Pass] Test 2: two_sum_sorted")
-
-        # Test 3: max_area_water
-        assert max_area_water([1, 8, 6, 2, 5, 4, 8, 3, 7]) == 49, "Test 3 Failed"
-        print("[Pass] Test 3: max_area_water")
-
-        # Test 4: max_sub_array_of_size_k
-        assert max_sub_array_of_size_k([2, 1, 5, 1, 3, 2], 3) == 9, "Test 4 Failed"
-        print("[Pass] Test 4: max_sub_array_of_size_k")
-
-        # Test 5: length_of_longest_substring
-        assert length_of_longest_substring("abcabcbb") == 3, "Test 5.1 Failed"
-        assert length_of_longest_substring("bbbbb") == 1, "Test 5.2 Failed"
-        assert length_of_longest_substring("pwwkew") == 3, "Test 5.3 Failed"
-        print("[Pass] Test 5: length_of_longest_substring")
-
-        # Test 6: min_sub_array_len
-        assert min_sub_array_len(7, [2, 3, 1, 2, 4, 3]) == 2, "Test 6.1 Failed"
-        assert min_sub_array_len(4, [1, 4, 4]) == 1, "Test 6.2 Failed"
-        assert min_sub_array_len(11, [1, 1, 1, 1, 1]) == 0, "Test 6.3 Failed"
-        print("[Pass] Test 6: min_sub_array_len")
-
-        print("\n[EXCELLENT] All tests in 04_two_pointers_sliding_window passed!")
+        res1_a = is_palindrome("A man, a plan, a canal: Panama")
+        res1_b = is_palindrome("race a car")
+        assert res1_a is True, f"Expected True, got {res1_a}"
+        assert res1_b is False, f"Expected False, got {res1_b}"
+        print("[Pass] โจทย์ที่ 1: is_palindrome")
+        print(f"       -> 'A man, a plan, a canal: Panama' -> {res1_a} (ถูกต้อง!)")
+        print(f"       -> 'race a car'                     -> {res1_b} (ถูกต้อง!)")
     except AssertionError as e:
-        print(f"\n[FAIL] {e}")
-        print("Tip: ทบทวนการขยับ pointer ซ้าย-ขวา ใน README.md / solutions.py")
+        print(f"[FAIL] โจทย์ที่ 1: is_palindrome -> {e}")
     except Exception as e:
-        print(f"\n[ERROR] เกิดข้อผิดพลาด: {e}")
+        print(f"[ERROR] โจทย์ที่ 1: {e}")
+
+    print("--------------------------------------------------")
+
+    # Test 2: two_sum_sorted
+    try:
+        res2_a = two_sum_sorted([2, 7, 11, 15], 9)
+        res2_b = two_sum_sorted([2, 3, 4], 6)
+        assert res2_a == [1, 2], f"Expected [1, 2], got {res2_a}"
+        assert res2_b == [1, 3], f"Expected [1, 3], got {res2_b}"
+        print("[Pass] โจทย์ที่ 2: two_sum_sorted")
+        print(f"       -> [2, 7, 11, 15], target=9 -> Output (1-based): {res2_a} (ถูกต้อง!)")
+        print(f"       -> [2, 3, 4], target=6      -> Output (1-based): {res2_b} (ถูกต้อง!)")
+    except AssertionError as e:
+        print(f"[FAIL] โจทย์ที่ 2: two_sum_sorted -> {e}")
+    except Exception as e:
+        print(f"[ERROR] โจทย์ที่ 2: {e}")
+
+    print("--------------------------------------------------")
+
+    # Test 3: max_area_water
+    try:
+        heights = [1, 8, 6, 2, 5, 4, 8, 3, 7]
+        res3 = max_area_water(heights)
+        assert res3 == 49, f"Expected 49, got {res3}"
+        print("[Pass] โจทย์ที่ 3: max_area_water")
+        print(f"       -> Heights:       {heights}")
+        print(f"       -> Output ของคุณ: {res3} (ถูกต้อง!)")
+    except AssertionError as e:
+        print(f"[FAIL] โจทย์ที่ 3: max_area_water -> {e}")
+    except Exception as e:
+        print(f"[ERROR] โจทย์ที่ 3: {e}")
+
+    print("--------------------------------------------------")
+
+    # Test 4: max_sub_array_of_size_k
+    try:
+        nums4 = [2, 1, 5, 1, 3, 2]
+        res4 = max_sub_array_of_size_k(nums4, 3)
+        assert res4 == 9, f"Expected 9, got {res4}"
+        print("[Pass] โจทย์ที่ 4: max_sub_array_of_size_k")
+        print(f"       -> nums: {nums4}, k=3")
+        print(f"       -> Output ของคุณ: {res4} (ถูกต้อง!)")
+    except AssertionError as e:
+        print(f"[FAIL] โจทย์ที่ 4: max_sub_array_of_size_k -> {e}")
+    except Exception as e:
+        print(f"[ERROR] โจทย์ที่ 4: {e}")
+
+    print("--------------------------------------------------")
+
+    # Test 5: length_of_longest_substring
+    try:
+        res5_a = length_of_longest_substring("abcabcbb")
+        res5_b = length_of_longest_substring("bbbbb")
+        res5_c = length_of_longest_substring("pwwkew")
+        assert res5_a == 3, f"'abcabcbb' Expected 3, got {res5_a}"
+        assert res5_b == 1, f"'bbbbb' Expected 1, got {res5_b}"
+        assert res5_c == 3, f"'pwwkew' Expected 3, got {res5_c}"
+        print("[Pass] โจทย์ที่ 5: length_of_longest_substring")
+        print(f"       -> 'abcabcbb' -> {res5_a} (ถูกต้อง!)")
+        print(f"       -> 'bbbbb'    -> {res5_b} (ถูกต้อง!)")
+        print(f"       -> 'pwwkew'   -> {res5_c} (ถูกต้อง!)")
+    except AssertionError as e:
+        print(f"[FAIL] โจทย์ที่ 5: length_of_longest_substring -> {e}")
+    except Exception as e:
+        print(f"[ERROR] โจทย์ที่ 5: {e}")
+
+    print("--------------------------------------------------")
+
+    # Test 6: min_sub_array_len
+    try:
+        res6_a = min_sub_array_len(7, [2, 3, 1, 2, 4, 3])
+        res6_b = min_sub_array_len(4, [1, 4, 4])
+        res6_c = min_sub_array_len(11, [1, 1, 1, 1, 1])
+        assert res6_a == 2, f"Target 7 Expected 2, got {res6_a}"
+        assert res6_b == 1, f"Target 4 Expected 1, got {res6_b}"
+        assert res6_c == 0, f"Target 11 Expected 0, got {res6_c}"
+        print("[Pass] โจทย์ที่ 6: min_sub_array_len")
+        print(f"       -> target=7, [2, 3, 1, 2, 4, 3] -> {res6_a} (ถูกต้อง!)")
+        print(f"       -> target=4, [1, 4, 4]          -> {res6_b} (ถูกต้อง!)")
+        print(f"       -> target=11, [1, 1, 1, 1, 1]   -> {res6_c} (ถูกต้อง!)")
+    except AssertionError as e:
+        print(f"[FAIL] โจทย์ที่ 6: min_sub_array_len -> {e}")
+    except Exception as e:
+        print(f"[ERROR] โจทย์ที่ 6: {e}")
+
+    print("==================================================")

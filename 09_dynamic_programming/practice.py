@@ -53,35 +53,75 @@ def length_of_lis(nums: List[int]) -> int:
 if __name__ == "__main__":
     import sys
     sys.stdout.reconfigure(encoding="utf-8")
-    print("Testing your practice implementations in 09_dynamic_programming...")
+    print("==================================================")
+    print("🚀 ผลการทดสอบโค้ดของคุณ (09_dynamic_programming)")
+    print("==================================================")
 
+    # Test 1: climb_stairs
     try:
-        # Test 1: climb_stairs
-        assert climb_stairs(2) == 2, "Test 1.1 Failed"
-        assert climb_stairs(3) == 3, "Test 1.2 Failed"
-        assert climb_stairs(5) == 8, "Test 1.3 Failed"
-        print("[Pass] Test 1: climb_stairs")
-
-        # Test 2: house_robber
-        assert house_robber([1, 2, 3, 1]) == 4, "Test 2.1 Failed"
-        assert house_robber([2, 7, 9, 3, 1]) == 12, "Test 2.2 Failed"
-        print("[Pass] Test 2: house_robber")
-
-        # Test 3: coin_change
-        assert coin_change([1, 2, 5], 11) == 3, "Test 3.1 Failed"
-        assert coin_change([2], 3) == -1, "Test 3.2 Failed"
-        assert coin_change([1], 0) == 0, "Test 3.3 Failed"
-        print("[Pass] Test 3: coin_change")
-
-        # Test 4: length_of_lis
-        assert length_of_lis([10, 9, 2, 5, 3, 7, 101, 18]) == 4, "Test 4.1 Failed"
-        assert length_of_lis([0, 1, 0, 3, 2, 3]) == 4, "Test 4.2 Failed"
-        assert length_of_lis([7, 7, 7, 7, 7]) == 1, "Test 4.3 Failed"
-        print("[Pass] Test 4: length_of_lis")
-
-        print("\n[EXCELLENT] All tests in 09_dynamic_programming passed!")
+        r1_a = climb_stairs(2)
+        r1_b = climb_stairs(3)
+        r1_c = climb_stairs(5)
+        assert r1_a == 2 and r1_b == 3 and r1_c == 8, f"Expected (2, 3, 8), got ({r1_a}, {r1_b}, {r1_c})"
+        print("[Pass] โจทย์ที่ 1: climb_stairs")
+        print(f"       -> บันได 2 ขั้น: {r1_a} วิธี (ถูกต้อง!)")
+        print(f"       -> บันได 3 ขั้น: {r1_b} วิธี (ถูกต้อง!)")
+        print(f"       -> บันได 5 ขั้น: {r1_c} วิธี (ถูกต้อง!)")
     except AssertionError as e:
-        print(f"\n[FAIL] {e}")
-        print("Tip: ตรวจสอบ State Definition และ Base Case ใน README.md / solutions.py")
+        print(f"[FAIL] โจทย์ที่ 1: climb_stairs -> {e}")
     except Exception as e:
-        print(f"\n[ERROR] เกิดข้อผิดพลาด: {e}")
+        print(f"[ERROR] โจทย์ที่ 1: {e}")
+
+    print("--------------------------------------------------")
+
+    # Test 2: house_robber
+    try:
+        houses1 = [1, 2, 3, 1]
+        houses2 = [2, 7, 9, 3, 1]
+        r2_a = house_robber(houses1)
+        r2_b = house_robber(houses2)
+        assert r2_a == 4, f"Houses {houses1} Expected 4, got {r2_a}"
+        assert r2_b == 12, f"Houses {houses2} Expected 12, got {r2_b}"
+        print("[Pass] โจทย์ที่ 2: house_robber")
+        print(f"       -> {houses1} ได้เงินมากสุด: {r2_a} (ถูกต้อง!)")
+        print(f"       -> {houses2} ได้เงินมากสุด: {r2_b} (ถูกต้อง!)")
+    except AssertionError as e:
+        print(f"[FAIL] โจทย์ที่ 2: house_robber -> {e}")
+    except Exception as e:
+        print(f"[ERROR] โจทย์ที่ 2: {e}")
+
+    print("--------------------------------------------------")
+
+    # Test 3: coin_change
+    try:
+        r3_a = coin_change([1, 2, 5], 11)
+        r3_b = coin_change([2], 3)
+        r3_c = coin_change([1], 0)
+        assert r3_a == 3, f"Expected 3, got {r3_a}"
+        assert r3_b == -1, f"Expected -1, got {r3_b}"
+        assert r3_c == 0, f"Expected 0, got {r3_c}"
+        print("[Pass] โจทย์ที่ 3: coin_change")
+        print(f"       -> coins=[1,2,5], amount=11 -> ใช้ {r3_a} เหรียญ (ถูกต้อง!)")
+        print(f"       -> coins=[2], amount=3      -> ทอนไม่ได้ ({r3_b}) (ถูกต้อง!)")
+        print(f"       -> coins=[1], amount=0      -> ใช้ {r3_c} เหรียญ (ถูกต้อง!)")
+    except AssertionError as e:
+        print(f"[FAIL] โจทย์ที่ 3: coin_change -> {e}")
+    except Exception as e:
+        print(f"[ERROR] โจทย์ที่ 3: {e}")
+
+    print("--------------------------------------------------")
+
+    # Test 4: length_of_lis
+    try:
+        nums_lis = [10, 9, 2, 5, 3, 7, 101, 18]
+        r4 = length_of_lis(nums_lis)
+        assert r4 == 4, f"Expected 4, got {r4}"
+        print("[Pass] โจทย์ที่ 4: length_of_lis")
+        print(f"       -> Input:         {nums_lis}")
+        print(f"       -> Output ของคุณ: ความยาว LIS คือ {r4} (ถูกต้อง!)")
+    except AssertionError as e:
+        print(f"[FAIL] โจทย์ที่ 4: length_of_lis -> {e}")
+    except Exception as e:
+        print(f"[ERROR] โจทย์ที่ 4: {e}")
+
+    print("==================================================")

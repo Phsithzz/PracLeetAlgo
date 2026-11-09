@@ -82,57 +82,103 @@ def flood_fill(image: List[List[int]], sr: int, sc: int, color: int) -> List[Lis
 if __name__ == "__main__":
     import sys
     sys.stdout.reconfigure(encoding="utf-8")
-    print("Testing your practice implementations in 08_tree_graph_traversal...")
+    print("==================================================")
+    print("🚀 ผลการทดสอบโค้ดของคุณ (08_tree_graph_traversal)")
+    print("==================================================")
+
+    # สร้าง Binary Tree จำลอง
+    tree = TreeNode(3)
+    tree.left = TreeNode(9)
+    tree.right = TreeNode(20, TreeNode(15), TreeNode(7))
+
+    # Test 1: max_depth
+    try:
+        depth = max_depth(tree)
+        assert depth == 3, f"Expected 3, got {depth}"
+        print("[Pass] โจทย์ที่ 1: max_depth")
+        print(f"       -> Tree ความสูง:  {depth} (ถูกต้อง!)")
+    except AssertionError as e:
+        print(f"[FAIL] โจทย์ที่ 1: max_depth -> {e}")
+    except Exception as e:
+        print(f"[ERROR] โจทย์ที่ 1: {e}")
+
+    print("--------------------------------------------------")
+
+    # Test 2: level_order
+    try:
+        res_lo = level_order(tree)
+        assert res_lo == [[3], [9, 20], [15, 7]], f"Expected [[3], [9, 20], [15, 7]], got {res_lo}"
+        print("[Pass] โจทย์ที่ 2: level_order")
+        print(f"       -> ลำดับตามชั้น:  {res_lo} (ถูกต้อง!)")
+    except AssertionError as e:
+        print(f"[FAIL] โจทย์ที่ 2: level_order -> {e}")
+    except Exception as e:
+        print(f"[ERROR] โจทย์ที่ 2: {e}")
+
+    print("--------------------------------------------------")
+
+    # Test 3: graph_dfs & graph_bfs
+    graph = {
+        "A": ["B", "C"],
+        "B": ["D", "E"],
+        "C": ["F"],
+        "D": [],
+        "E": ["F"],
+        "F": [],
+    }
+    try:
+        res_dfs = graph_dfs(graph, "A")
+        assert res_dfs == ["A", "B", "D", "E", "F", "C"], f"Expected ['A', 'B', 'D', 'E', 'F', 'C'], got {res_dfs}"
+        print("[Pass] โจทย์ที่ 3: graph_dfs")
+        print(f"       -> DFS Traversal: {res_dfs} (ถูกต้อง!)")
+    except AssertionError as e:
+        print(f"[FAIL] โจทย์ที่ 3: graph_dfs -> {e}")
+    except Exception as e:
+        print(f"[ERROR] โจทย์ที่ 3: {e}")
+
+    print("--------------------------------------------------")
 
     try:
-        # สร้าง Binary Tree
-        tree = TreeNode(3)
-        tree.left = TreeNode(9)
-        tree.right = TreeNode(20, TreeNode(15), TreeNode(7))
+        res_bfs = graph_bfs(graph, "A")
+        assert res_bfs == ["A", "B", "C", "D", "E", "F"], f"Expected ['A', 'B', 'C', 'D', 'E', 'F'], got {res_bfs}"
+        print("[Pass] โจทย์ที่ 4: graph_bfs")
+        print(f"       -> BFS Traversal: {res_bfs} (ถูกต้อง!)")
+    except AssertionError as e:
+        print(f"[FAIL] โจทย์ที่ 4: graph_bfs -> {e}")
+    except Exception as e:
+        print(f"[ERROR] โจทย์ที่ 4: {e}")
 
-        # Test 1: max_depth
-        assert max_depth(tree) == 3, "Test 1 Failed: max_depth"
-        print("[Pass] Test 1: max_depth")
+    print("--------------------------------------------------")
 
-        # Test 2: level_order
-        res_lo = level_order(tree)
-        assert res_lo == [[3], [9, 20], [15, 7]], f"Test 2 Failed: {res_lo}"
-        print("[Pass] Test 2: level_order")
-
-        # Test 3 & 4: graph_dfs & graph_bfs
-        graph = {
-            "A": ["B", "C"],
-            "B": ["D", "E"],
-            "C": ["F"],
-            "D": [],
-            "E": ["F"],
-            "F": [],
-        }
-        assert graph_dfs(graph, "A") == ["A", "B", "D", "E", "F", "C"], "Test 3 Failed: graph_dfs"
-        print("[Pass] Test 3: graph_dfs")
-
-        assert graph_bfs(graph, "A") == ["A", "B", "C", "D", "E", "F"], "Test 4 Failed: graph_bfs"
-        print("[Pass] Test 4: graph_bfs")
-
-        # Test 5: num_islands
+    # Test 5: num_islands
+    try:
         grid1 = [
             ["1", "1", "0", "0", "0"],
             ["1", "1", "0", "0", "0"],
             ["0", "0", "1", "0", "0"],
             ["0", "0", "0", "1", "1"],
         ]
-        assert num_islands(grid1) == 3, "Test 5 Failed: num_islands"
-        print("[Pass] Test 5: num_islands")
+        islands = num_islands(grid1)
+        assert islands == 3, f"Expected 3 islands, got {islands}"
+        print("[Pass] โจทย์ที่ 5: num_islands")
+        print(f"       -> จำนวนเกาะที่นับได้: {islands} เกาะ (ถูกต้อง!)")
+    except AssertionError as e:
+        print(f"[FAIL] โจทย์ที่ 5: num_islands -> {e}")
+    except Exception as e:
+        print(f"[ERROR] โจทย์ที่ 5: {e}")
 
-        # Test 6: flood_fill
+    print("--------------------------------------------------")
+
+    # Test 6: flood_fill
+    try:
         img = [[1, 1, 1], [1, 1, 0], [1, 0, 1]]
         filled = flood_fill(img, 1, 1, 2)
-        assert filled == [[2, 2, 2], [2, 2, 0], [2, 0, 1]], "Test 6 Failed: flood_fill"
-        print("[Pass] Test 6: flood_fill")
-
-        print("\n[EXCELLENT] All tests in 08_tree_graph_traversal passed!")
+        assert filled == [[2, 2, 2], [2, 2, 0], [2, 0, 1]], f"Expected [[2, 2, 2], [2, 2, 0], [2, 0, 1]], got {filled}"
+        print("[Pass] โจทย์ที่ 6: flood_fill")
+        print(f"       -> ภาพหลังเทสี:   {filled} (ถูกต้อง!)")
     except AssertionError as e:
-        print(f"\n[FAIL] {e}")
-        print("Tip: ทบทวน base case ของ DFS และการใช้ deque ใน BFS จาก README.md / solutions.py")
+        print(f"[FAIL] โจทย์ที่ 6: flood_fill -> {e}")
     except Exception as e:
-        print(f"\n[ERROR] เกิดข้อผิดพลาด: {e}")
+        print(f"[ERROR] โจทย์ที่ 6: {e}")
+
+    print("==================================================")

@@ -63,41 +63,86 @@ def group_anagrams(strs: List[str]) -> List[List[str]]:
 if __name__ == "__main__":
     import sys
     sys.stdout.reconfigure(encoding="utf-8")
-    print("Testing your practice implementations in 03_hashmap_set...")
+    print("==================================================")
+    print("🚀 ผลการทดสอบโค้ดของคุณ (03_hashmap_set)")
+    print("==================================================")
 
+    # Test 1: frequency_counter
     try:
-        # Test 1: frequency_counter
         items = ["apple", "banana", "apple", "cherry", "banana", "apple"]
         res1 = frequency_counter(items)
-        assert res1 == {"apple": 3, "banana": 2, "cherry": 1}, f"Test 1 Failed: {res1}"
-        print("[Pass] Test 1: frequency_counter")
+        assert res1 == {"apple": 3, "banana": 2, "cherry": 1}, f"Expected {{'apple': 3, 'banana': 2, 'cherry': 1}}, got {res1}"
+        print("[Pass] โจทย์ที่ 1: frequency_counter")
+        print(f"       -> Items:         {items}")
+        print(f"       -> Output ของคุณ: {res1} (ถูกต้อง!)")
+    except AssertionError as e:
+        print(f"[FAIL] โจทย์ที่ 1: frequency_counter -> {e}")
+    except Exception as e:
+        print(f"[ERROR] โจทย์ที่ 1: {e}")
 
-        # Test 2: has_duplicate
-        assert has_duplicate([1, 2, 3, 1]) is True, "Test 2.1 Failed"
-        assert has_duplicate([1, 2, 3, 4]) is False, "Test 2.2 Failed"
-        print("[Pass] Test 2: has_duplicate")
+    print("--------------------------------------------------")
 
-        # Test 3: two_sum
-        assert two_sum([2, 7, 11, 15], 9) == [0, 1], "Test 3.1 Failed"
-        assert two_sum([3, 2, 4], 6) == [1, 2], "Test 3.2 Failed"
-        print("[Pass] Test 3: two_sum")
+    # Test 2: has_duplicate
+    try:
+        res2_a = has_duplicate([1, 2, 3, 1])
+        res2_b = has_duplicate([1, 2, 3, 4])
+        assert res2_a is True, f"Array [1,2,3,1] Expected True, got {res2_a}"
+        assert res2_b is False, f"Array [1,2,3,4] Expected False, got {res2_b}"
+        print("[Pass] โจทย์ที่ 2: has_duplicate")
+        print(f"       -> [1, 2, 3, 1] ผลลัพธ์: {res2_a} (ถูกต้อง!)")
+        print(f"       -> [1, 2, 3, 4] ผลลัพธ์: {res2_b} (ถูกต้อง!)")
+    except AssertionError as e:
+        print(f"[FAIL] โจทย์ที่ 2: has_duplicate -> {e}")
+    except Exception as e:
+        print(f"[ERROR] โจทย์ที่ 2: {e}")
 
-        # Test 4: is_anagram
-        assert is_anagram("anagram", "nagaram") is True, "Test 4.1 Failed"
-        assert is_anagram("rat", "car") is False, "Test 4.2 Failed"
-        print("[Pass] Test 4: is_anagram")
+    print("--------------------------------------------------")
 
-        # Test 5: group_anagrams
+    # Test 3: two_sum
+    try:
+        res3_a = two_sum([2, 7, 11, 15], 9)
+        res3_b = two_sum([3, 2, 4], 6)
+        assert res3_a == [0, 1], f"Expected [0, 1], got {res3_a}"
+        assert res3_b == [1, 2], f"Expected [1, 2], got {res3_b}"
+        print("[Pass] โจทย์ที่ 3: two_sum")
+        print(f"       -> [2, 7, 11, 15], target=9 -> Output: {res3_a} (ถูกต้อง!)")
+        print(f"       -> [3, 2, 4], target=6      -> Output: {res3_b} (ถูกต้อง!)")
+    except AssertionError as e:
+        print(f"[FAIL] โจทย์ที่ 3: two_sum -> {e}")
+    except Exception as e:
+        print(f"[ERROR] โจทย์ที่ 3: {e}")
+
+    print("--------------------------------------------------")
+
+    # Test 4: is_anagram
+    try:
+        res4_a = is_anagram("anagram", "nagaram")
+        res4_b = is_anagram("rat", "car")
+        assert res4_a is True, f"('anagram', 'nagaram') Expected True, got {res4_a}"
+        assert res4_b is False, f"('rat', 'car') Expected False, got {res4_b}"
+        print("[Pass] โจทย์ที่ 4: is_anagram")
+        print(f"       -> 'anagram' & 'nagaram': {res4_a} (ถูกต้อง!)")
+        print(f"       -> 'rat' & 'car':         {res4_b} (ถูกต้อง!)")
+    except AssertionError as e:
+        print(f"[FAIL] โจทย์ที่ 4: is_anagram -> {e}")
+    except Exception as e:
+        print(f"[ERROR] โจทย์ที่ 4: {e}")
+
+    print("--------------------------------------------------")
+
+    # Test 5: group_anagrams
+    try:
         raw_words = ["eat", "tea", "tan", "ate", "nat", "bat"]
         res_groups = group_anagrams(raw_words)
         normalized = sorted([sorted(g) for g in (res_groups or [])])
         expected = sorted([["ate", "eat", "tea"], ["bat"], ["nat", "tan"]])
-        assert normalized == expected, f"Test 5 Failed: got {normalized}"
-        print("[Pass] Test 5: group_anagrams")
-
-        print("\n[EXCELLENT] All tests in 03_hashmap_set passed!")
+        assert normalized == expected, f"Expected {expected}, got {res_groups}"
+        print("[Pass] โจทย์ที่ 5: group_anagrams")
+        print(f"       -> Input:         {raw_words}")
+        print(f"       -> Output ของคุณ: {res_groups} (ถูกต้อง!)")
     except AssertionError as e:
-        print(f"\n[FAIL] {e}")
-        print("Tip: ทบทวนการใช้ dict.get() หรือ complement ใน README.md / solutions.py")
+        print(f"[FAIL] โจทย์ที่ 5: group_anagrams -> {e}")
     except Exception as e:
-        print(f"\n[ERROR] เกิดข้อผิดพลาด: {e}")
+        print(f"[ERROR] โจทย์ที่ 5: {e}")
+
+    print("==================================================")

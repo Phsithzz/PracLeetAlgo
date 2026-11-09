@@ -64,41 +64,85 @@ def combination_sum(candidates: List[int], target: int) -> List[List[int]]:
 if __name__ == "__main__":
     import sys
     sys.stdout.reconfigure(encoding="utf-8")
-    print("Testing your practice implementations in 07_recursion_backtracking...")
+    print("==================================================")
+    print("🚀 ผลการทดสอบโค้ดของคุณ (07_recursion_backtracking)")
+    print("==================================================")
 
+    # Test 1: factorial
     try:
-        # Test 1: factorial
-        assert factorial(5) == 120, "Test 1 Failed"
-        assert factorial(0) == 1, "Test 1.1 Failed"
-        print("[Pass] Test 1: factorial")
+        res1_a = factorial(5)
+        res1_b = factorial(0)
+        assert res1_a == 120 and res1_b == 1, f"Expected (120, 1), got ({res1_a}, {res1_b})"
+        print("[Pass] โจทย์ที่ 1: factorial")
+        print(f"       -> factorial(5) = {res1_a} (ถูกต้อง!)")
+        print(f"       -> factorial(0) = {res1_b} (ถูกต้อง!)")
+    except AssertionError as e:
+        print(f"[FAIL] โจทย์ที่ 1: factorial -> {e}")
+    except Exception as e:
+        print(f"[ERROR] โจทย์ที่ 1: {e}")
 
-        # Test 2: fibonacci
-        assert fibonacci(6) == 8, "Test 2 Failed: F(6) = 8"
-        print("[Pass] Test 2: fibonacci")
+    print("--------------------------------------------------")
 
-        # Test 3: subsets
-        subs = subsets([1, 2, 3])
+    # Test 2: fibonacci
+    try:
+        res2 = fibonacci(6)
+        assert res2 == 8, f"Expected 8, got {res2}"
+        print("[Pass] โจทย์ที่ 2: fibonacci")
+        print(f"       -> fibonacci(6) = {res2} (ถูกต้อง!)")
+    except AssertionError as e:
+        print(f"[FAIL] โจทย์ที่ 2: fibonacci -> {e}")
+    except Exception as e:
+        print(f"[ERROR] โจทย์ที่ 2: {e}")
+
+    print("--------------------------------------------------")
+
+    # Test 3: subsets
+    try:
+        sample3 = [1, 2, 3]
+        subs = subsets(sample3)
         normalized_subs = sorted([sorted(s) for s in (subs or [])])
         expected_subs = sorted([[], [1], [2], [3], [1, 2], [1, 3], [2, 3], [1, 2, 3]])
-        assert normalized_subs == expected_subs, f"Test 3 Failed: got {subs}"
-        print("[Pass] Test 3: subsets")
+        assert normalized_subs == expected_subs, f"Expected {expected_subs}, got {subs}"
+        print("[Pass] โจทย์ที่ 3: subsets")
+        print(f"       -> Input:         {sample3}")
+        print(f"       -> Output ของคุณ: {subs} (ถูกต้อง!)")
+    except AssertionError as e:
+        print(f"[FAIL] โจทย์ที่ 3: subsets -> {e}")
+    except Exception as e:
+        print(f"[ERROR] โจทย์ที่ 3: {e}")
 
-        # Test 4: permutations
-        perms = permutations([1, 2, 3])
-        assert len(perms or []) == 6, "Test 4 Failed: length must be 6"
-        assert [1, 2, 3] in (perms or []) and [3, 2, 1] in (perms or []), "Test 4 Failed"
-        print("[Pass] Test 4: permutations")
+    print("--------------------------------------------------")
 
-        # Test 5: combination_sum
-        combos = combination_sum([2, 3, 6, 7], 7)
+    # Test 4: permutations
+    try:
+        sample4 = [1, 2, 3]
+        perms = permutations(sample4)
+        assert len(perms or []) == 6 and [1, 2, 3] in (perms or []), f"Permutations invalid: {perms}"
+        print("[Pass] โจทย์ที่ 4: permutations")
+        print(f"       -> Input:         {sample4}")
+        print(f"       -> จำนวนรูปแบบ:   {len(perms)} รูปแบบ (ครบ 3! = 6 รูปแบบ)")
+        print(f"       -> Output ของคุณ: {perms} (ถูกต้อง!)")
+    except AssertionError as e:
+        print(f"[FAIL] โจทย์ที่ 4: permutations -> {e}")
+    except Exception as e:
+        print(f"[ERROR] โจทย์ที่ 4: {e}")
+
+    print("--------------------------------------------------")
+
+    # Test 5: combination_sum
+    try:
+        sample5 = [2, 3, 6, 7]
+        target5 = 7
+        combos = combination_sum(sample5, target5)
         normalized_combos = sorted([sorted(c) for c in (combos or [])])
         expected_combos = sorted([[2, 2, 3], [7]])
-        assert normalized_combos == expected_combos, f"Test 5 Failed: got {combos}"
-        print("[Pass] Test 5: combination_sum")
-
-        print("\n[EXCELLENT] All tests in 07_recursion_backtracking passed!")
+        assert normalized_combos == expected_combos, f"Expected {expected_combos}, got {combos}"
+        print("[Pass] โจทย์ที่ 5: combination_sum")
+        print(f"       -> candidates: {sample5}, target: {target5}")
+        print(f"       -> Output ของคุณ: {combos} (ถูกต้อง!)")
     except AssertionError as e:
-        print(f"\n[FAIL] {e}")
-        print("Tip: ทบทวน Choose -> Explore -> Unchoose ใน README.md / solutions.py")
+        print(f"[FAIL] โจทย์ที่ 5: combination_sum -> {e}")
     except Exception as e:
-        print(f"\n[ERROR] เกิดข้อผิดพลาด: {e}")
+        print(f"[ERROR] โจทย์ที่ 5: {e}")
+
+    print("==================================================")

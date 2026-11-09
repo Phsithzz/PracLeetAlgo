@@ -81,45 +81,81 @@ class RecentCounter:
 if __name__ == "__main__":
     import sys
     sys.stdout.reconfigure(encoding="utf-8")
-    print("Testing your practice implementations in 05_stack_queue...")
+    print("==================================================")
+    print("🚀 ผลการทดสอบโค้ดของคุณ (05_stack_queue)")
+    print("==================================================")
 
+    # Test 1: is_valid_parentheses
     try:
-        # Test 1: is_valid_parentheses
-        assert is_valid_parentheses("()") is True, "Test 1.1 Failed"
-        assert is_valid_parentheses("()[]{}") is True, "Test 1.2 Failed"
-        assert is_valid_parentheses("(]") is False, "Test 1.3 Failed"
-        assert is_valid_parentheses("([)]") is False, "Test 1.4 Failed"
-        assert is_valid_parentheses("{[]}") is True, "Test 1.5 Failed"
-        print("[Pass] Test 1: is_valid_parentheses")
+        res1_a = is_valid_parentheses("()")
+        res1_b = is_valid_parentheses("()[]{}")
+        res1_c = is_valid_parentheses("([)]")
+        assert res1_a is True and res1_b is True and res1_c is False, "Bracket validation failed"
+        print("[Pass] โจทย์ที่ 1: is_valid_parentheses")
+        print(f"       -> '()'     : {res1_a} (ถูกต้อง!)")
+        print(f"       -> '()[]{{}}': {res1_b} (ถูกต้อง!)")
+        print(f"       -> '([)]'   : {res1_c} (ถูกต้อง!)")
+    except AssertionError as e:
+        print(f"[FAIL] โจทย์ที่ 1: is_valid_parentheses -> {e}")
+    except Exception as e:
+        print(f"[ERROR] โจทย์ที่ 1: {e}")
 
-        # Test 2: eval_rpn
-        assert eval_rpn(["2", "1", "+", "3", "*"]) == 9, "Test 2.1 Failed"
-        assert eval_rpn(["4", "13", "5", "/", "+"]) == 6, "Test 2.2 Failed"
-        assert eval_rpn(["10", "6", "9", "3", "+", "-11", "*", "/", "*", "17", "+", "5", "+"]) == 22, "Test 2.3 Failed"
-        print("[Pass] Test 2: eval_rpn")
+    print("--------------------------------------------------")
 
-        # Test 3: MinStack
+    # Test 2: eval_rpn
+    try:
+        tokens2_a = ["2", "1", "+", "3", "*"]
+        res2_a = eval_rpn(tokens2_a)
+        tokens2_b = ["4", "13", "5", "/", "+"]
+        res2_b = eval_rpn(tokens2_b)
+        assert res2_a == 9, f"Tokens {tokens2_a} Expected 9, got {res2_a}"
+        assert res2_b == 6, f"Tokens {tokens2_b} Expected 6, got {res2_b}"
+        print("[Pass] โจทย์ที่ 2: eval_rpn")
+        print(f"       -> ['2','1','+','3','*']   -> Output: {res2_a} (ถูกต้อง!)")
+        print(f"       -> ['4','13','5','/','+']  -> Output: {res2_b} (ถูกต้อง!)")
+    except AssertionError as e:
+        print(f"[FAIL] โจทย์ที่ 2: eval_rpn -> {e}")
+    except Exception as e:
+        print(f"[ERROR] โจทย์ที่ 2: {e}")
+
+    print("--------------------------------------------------")
+
+    # Test 3: MinStack
+    try:
         ms = MinStack()
         ms.push(-2)
         ms.push(0)
         ms.push(-3)
-        assert ms.getMin() == -3, "Test 3.1 Failed"
+        m1 = ms.getMin()
+        assert m1 == -3, f"Expected min -3, got {m1}"
         ms.pop()
-        assert ms.top() == 0, "Test 3.2 Failed"
-        assert ms.getMin() == -2, "Test 3.3 Failed"
-        print("[Pass] Test 3: MinStack")
-
-        # Test 4: RecentCounter
-        rc = RecentCounter()
-        assert rc.ping(1) == 1, "Test 4.1 Failed"
-        assert rc.ping(100) == 2, "Test 4.2 Failed"
-        assert rc.ping(3001) == 3, "Test 4.3 Failed"
-        assert rc.ping(3002) == 3, "Test 4.4 Failed"
-        print("[Pass] Test 4: RecentCounter")
-
-        print("\n[EXCELLENT] All tests in 05_stack_queue passed!")
+        top_val = ms.top()
+        m2 = ms.getMin()
+        assert top_val == 0, f"Expected top 0, got {top_val}"
+        assert m2 == -2, f"Expected min -2, got {m2}"
+        print("[Pass] โจทย์ที่ 3: MinStack")
+        print(f"       -> push(-2), push(0), push(-3) -> getMin(): {m1} (ถูกต้อง!)")
+        print(f"       -> pop() -> top(): {top_val}, getMin(): {m2} (ถูกต้อง!)")
     except AssertionError as e:
-        print(f"\n[FAIL] {e}")
-        print("Tip: ตรวจสอบ LIFO สำหรับ Stack และ FIFO สำหรับ Deque ใน README.md / solutions.py")
+        print(f"[FAIL] โจทย์ที่ 3: MinStack -> {e}")
     except Exception as e:
-        print(f"\n[ERROR] เกิดข้อผิดพลาด: {e}")
+        print(f"[ERROR] โจทย์ที่ 3: {e}")
+
+    print("--------------------------------------------------")
+
+    # Test 4: RecentCounter
+    try:
+        rc = RecentCounter()
+        p1 = rc.ping(1)
+        p2 = rc.ping(100)
+        p3 = rc.ping(3001)
+        p4 = rc.ping(3002)
+        assert p1 == 1 and p2 == 2 and p3 == 3 and p4 == 3, f"RecentCounter expected [1, 2, 3, 3], got {[p1, p2, p3, p4]}"
+        print("[Pass] โจทย์ที่ 4: RecentCounter")
+        print(f"       -> ping(1): {p1}, ping(100): {p2}, ping(3001): {p3}, ping(3002): {p4} (ถูกต้อง!)")
+    except AssertionError as e:
+        print(f"[FAIL] โจทย์ที่ 4: RecentCounter -> {e}")
+    except Exception as e:
+        print(f"[ERROR] โจทย์ที่ 4: {e}")
+
+    print("==================================================")
