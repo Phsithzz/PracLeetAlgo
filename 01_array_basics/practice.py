@@ -54,6 +54,16 @@ def move_zeroes(nums: List[int]) -> None:
     - เงื่อนไข: In-place O(1) space
     """
     # TODO: เขียนโค้ดของคุณที่นี่
+    insert_z = 0
+
+    for num in nums:
+        if num != 0:
+            nums[insert_z] = num
+            insert_z += 1
+
+    while insert_z < len(nums):
+        nums[insert_z] = 0
+        insert_z += 1
     pass
 
 
@@ -65,6 +75,20 @@ def rotate_array(nums: List[int], k: int) -> None:
     - คำใบ้: ใช้วิธี Reverse 3 จังหวะ (ทั้งก้อน, k ตัวแรก, ตัวที่เหลือ)
     """
     # TODO: เขียนโค้ดของคุณที่นี่
+    n = len(nums)
+    if n == 0 :
+        return
+    k = k % n
+
+    def reverse_arr(all : List[int], start:int, end:int):
+        while start < end:
+            all[start], all[end] = all[end], all[start]
+            start += 1
+            end -= 1
+    reverse_arr(nums,0,n-1)
+    reverse_arr(nums,0,k-1)
+    reverse_arr(nums,k, n-1)
+
     pass
 
 
